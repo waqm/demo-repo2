@@ -23,4 +23,4 @@ if opselection == "1":
 elif opselection == "2":
     exponents(n1=int(input("Enter base number: ")), n2=int(input("Enter the exponent: ")))
 else: 
-    print("sod off")
+    print("sod off!")

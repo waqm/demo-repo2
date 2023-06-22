@@ -1,26 +1,51 @@
-def basearithmetic(n1, op, n2):
-        if op == "+":
-            print(n1+n2)
-        elif op == "-":
-            print(n1-n2)
-        elif op == "*":
-            print(n1*n2)
-        elif op == "/":
-            print(n1/n2)
+def base_arithmetic(n1, op, n2):
+    if op == "+":
+        return n1 + n2
+    elif op == "-":
+        return n1 - n2
+    elif op == "*":
+        return n1 * n2
+    elif op == "/":
+        if n2 != 0:
+            return n1 / n2
         else:
-            print ("Invalid operation!!")
+            return "Error: Division by zero!"
+    else:
+        return "Invalid operation!"
 
 def exponents(n1, n2):
-     print(n1**n2)
+    return n1 ** n2
 
-opselection = input("""Enter your choice:
-                       Enter 1 for basic arithmetic
-                       Enter 2 to calculate exponent
-                       """)
-        
-if opselection == "1":
-    basearithmetic(n1=float(input("Enter first number: ")), op=input("Enter your operation: "), n2=float(input("Enter second number: ")))
-elif opselection == "2":
-    exponents(n1=int(input("Enter base number: ")), n2=int(input("Enter the exponent: ")))
-else: 
-    print("sod off!")
+def get_float_input(prompt):
+    while True:
+        try:
+            return float(input(prompt))
+        except ValueError:
+            print("Invalid input! Please enter a valid number.")
+
+def get_int_input(prompt):
+    while True:
+        try:
+            return int(input(prompt))
+        except ValueError:
+            print("Invalid input! Please enter a valid integer.")
+
+print("Calculator Menu:")
+print("1. Basic arithmetic")
+print("2. Exponent calculation")
+
+op_selection = input("Enter your choice (1 or 2): ")
+
+if op_selection == "1":
+    n1 = get_float_input("Enter the first number: ")
+    op = input("Enter the operation (+, -, *, /): ")
+    n2 = get_float_input("Enter the second number: ")
+    result = base_arithmetic(n1, op, n2)
+    print("Result:", result)
+elif op_selection == "2":
+    base = get_int_input("Enter the base number: ")
+    exponent = get_int_input("Enter the exponent: ")
+    result = exponents(base, exponent)
+    print("Result:", result)
+else:
+    print("Invalid choice! Please enter 1 or 2.")
